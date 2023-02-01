@@ -10,4 +10,6 @@ public class ChaekjaengiSpringApplication {
 		SpringApplication.run(ChaekjaengiSpringApplication.class, args);
 	}
 
+	//sseooh branch test
+
 }
