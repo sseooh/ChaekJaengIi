@@ -9,5 +9,5 @@ public class ChaekjaengiSpringApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ChaekjaengiSpringApplication.class, args);
 	}
-
+// leejieun branch test
 }
