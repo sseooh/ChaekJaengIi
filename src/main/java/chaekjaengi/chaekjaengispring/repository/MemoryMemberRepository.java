@@ -10,17 +10,17 @@ import java.util.Optional;
 @Repository
 public class MemoryMemberRepository implements MemberRepository {
 
-    private static Map<String, String> store = new HashMap<>();
+    private static Map<String, Member> store = new HashMap<>();
 
     @Override
     public Member save(Member member) {
-        store.put(member.getId(), member.getPwd());
+        store.put(member.getId(), member);
         return member;
     }
 
     @Override
     public Optional<Member> findById(String id) {
-        return store.keySet().stream()
+        return store.values().stream()
                 .filter(member -> member.getId().equals(id))
                 .findAny();
     }
