@@ -24,10 +24,15 @@ public class MemberService {
 
     // 중복 검증
     private void validateDuplicateMember(Member member){
-        Optional<String> result = memberRepository.findById(member.getId());
+        Optional<Member> result = memberRepository.findById(member.getId());
         result.ifPresent(m->{
             throw new IllegalStateException("이미 존재하는 회원입니다.");
         });
 
+    }
+
+    public boolean login(String id, String pwd) {
+        if(!memberRepository.findById(id).isEmpty() && memberRepository.findById(id).equals(memberRepository.findByPwd(pwd))) return true;
+        else return false;
     }
 }
