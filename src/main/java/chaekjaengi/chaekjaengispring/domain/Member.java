@@ -1,6 +1,8 @@
 package chaekjaengi.chaekjaengispring.domain;
 
+import javax.persistence.Entity;
 
+@Entity
 public class Member {
 
     private String id;
