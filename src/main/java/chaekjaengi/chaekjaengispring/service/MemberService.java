@@ -4,15 +4,14 @@ import chaekjaengi.chaekjaengispring.domain.Member;
 import chaekjaengi.chaekjaengispring.repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+import org.springframework.transaction.annotation.Transactional;
 import java.util.Optional;
 
-@Service
+@Transactional
 public class MemberService {
 
     private final MemberRepository memberRepository;
 
-    @Autowired
     public MemberService(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }
