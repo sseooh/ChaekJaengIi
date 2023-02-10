@@ -19,7 +19,7 @@ public class JoinController {
     }
 
 
-    @GetMapping("members/join")
+    @GetMapping("members/joinForm")
     public String joinForm() {
         return "members/join";
     }
@@ -32,6 +32,6 @@ public class JoinController {
 
         memberService.join(member);
 
-        return "home"; //??
+        return "home";
     }
 }

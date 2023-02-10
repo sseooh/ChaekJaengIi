@@ -19,20 +19,23 @@ public class MemoryMemberRepository implements MemberRepository {
     }
 
     @Override
-    public Optional<String> findById(String id) {
-        return store.keySet().stream()
-                .filter(member -> member.equals(id))
+    public Optional<Member> findById(String id) {
+        return store.values().stream()
+                .filter(member -> member.getId().equals(id))
                 .findAny();
     }
 
     @Override
-    public Optional<String> findByPwd(String pwd) {
+    public Optional<Member> findByPwd(String pwd) {
         return store.values().stream()
-                .filter(member -> member.equals(pwd))
+                .filter(member -> member.getPwd().equals(pwd))
                 .findAny();
     }
+
 
     public void clearStore(){
         store.clear();
     }
+
+
 }

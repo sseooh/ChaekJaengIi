@@ -1,6 +1,8 @@
 package chaekjaengi.chaekjaengispring.domain;
 
+
 public class Member {
+
     private String id;
     private String pwd;
 
