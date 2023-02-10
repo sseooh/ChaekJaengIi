@@ -3,6 +3,7 @@ package chaekjaengi.chaekjaengispring.repository;
 import chaekjaengi.chaekjaengispring.domain.Member;
 
 import javax.persistence.EntityManager;
+import java.util.List;
 import java.util.Optional;
 
 public class JpaMemberRepository implements MemberRepository {
@@ -26,11 +27,15 @@ public class JpaMemberRepository implements MemberRepository {
 
     @Override
     public Optional<Member> findByPwd(String pwd) {
-        return Optional.empty();
+        List<Member> result = em.createQuery("select m from Member m where m.pwd = :pwd", Member.class)
+                .setParameter("pwd", pwd)
+                .getResultList();
+        return result.stream().findAny();
     }
-    /*
-    public Optional<Member> findAll() {
 
+    @Override
+    public List<Member> findAll() {
+        return em.createQuery("select m from Member m", Member.class).getResultList();
     }
-     */
+
 }
