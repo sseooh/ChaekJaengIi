@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class MainPageController {
 
-    @PostMapping("mainPage")
+    @PostMapping("/mainPage")
     public String MainPage() {
         return "mainPage";
     }
