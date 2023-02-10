@@ -31,9 +31,9 @@ public class MemoryMemberRepositoryTest {
         //then
         Optional<Member> result = repository.findById(member.getId());
         Optional<Member> result2 = repository.findByPwd(member.getPwd());
-        assertThat(member.getId()).isEqualTo(result);
+        assertThat(member).isEqualTo(result);
         // member.getId와 result의 값이 같으면 정상 실행 (save 실행 했을 때)
-        assertThat(member.getPwd()).isEqualTo(result2);
+        assertThat(member).isEqualTo(result2);
     }
 
     @Test
@@ -43,10 +43,10 @@ public class MemoryMemberRepositoryTest {
         repository.save(member1);
 
         Member member2 = new Member();
-        member2.setId("leejieun");
+        member2.setId("leejieun2");
         repository.save(member2);
 
-        String result = repository.findById("leejieun").get();
+        Member result = repository.findById("leejieun").get();
         assertThat(result).isEqualTo(member1.getId());
 
 
