@@ -1,13 +1,17 @@
 package chaekjaengi.chaekjaengispring.service;
 
+import org.springframework.transaction.annotation.Transactional;
+
 import chaekjaengi.chaekjaengispring.domain.Member;
 import chaekjaengi.chaekjaengispring.repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
-@Service
+//@Service
+@Transactional
 public class MemberService {
 
     private final MemberRepository memberRepository;
@@ -35,5 +39,13 @@ public class MemberService {
     public boolean login(String id, String pwd) {
         if(!memberRepository.findById(id).isEmpty() && memberRepository.findById(id).equals(memberRepository.findByPwd(pwd))) return true;
         else return false;
+    }
+
+    public List<Member> findMembers() {
+        return memberRepository.findAll();
+    }
+
+    public Optional<Member> findOne(String memberId) {
+        return memberRepository.findById(memberId);
     }
 }
