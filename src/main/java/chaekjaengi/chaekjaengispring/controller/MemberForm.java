@@ -1,10 +1,11 @@
 package chaekjaengi.chaekjaengispring.controller;
 
 public class MemberForm {
-
     private String id;
 
     private String pwd;
+
+    private String pwd_check;
 
     public String getId(){
         return id;
@@ -20,5 +21,13 @@ public class MemberForm {
 
     public void setPwd(String pwd){
         this.pwd = pwd;
+    }
+
+    public String getPwd_check() {
+        return pwd_check;
+    }
+
+    public void setPwd_check(String pwd_check) {
+        this.pwd_check = pwd_check;
     }
 }

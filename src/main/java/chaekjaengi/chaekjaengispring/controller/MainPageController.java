@@ -18,8 +18,10 @@ public class MainPageController {
     @PostMapping("/mainPage")
     public String MainPage(MemberForm form) {
         if(memberService.login(form.getId(), form.getPwd())) {
+            System.out.println("비밀번호가 일치함");
             return "mainPage";
         } else {
+            System.out.println("비밀번호 불일치");
             return "home";
         }
     }

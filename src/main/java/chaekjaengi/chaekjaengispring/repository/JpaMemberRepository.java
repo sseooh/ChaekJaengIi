@@ -19,8 +19,20 @@ public class JpaMemberRepository implements MemberRepository {
         return member;
     }
 
+
+    /**
+     *
+     * 확인하기
+     */
     @Override
     public Optional<Member> findById(String id) {
+        /*
+        List<Member> result = em.createQuery("select m from Member m where m.id = :id", Member.class)
+                .setParameter("id", id)
+                .getResultList();
+        return result.stream().findAny();
+
+         */
         Member member = em.find(Member.class, id);
         return Optional.ofNullable(member);
     }

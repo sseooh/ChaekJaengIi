@@ -16,23 +16,33 @@ public class MemberService {
 
     private final MemberRepository memberRepository;
 
-    @Autowired
+    //@Autowired
     public MemberService(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }
 
-    public String join(Member member){
+    public String join(Member member, String pwd_check){
         validateDuplicateMember(member);
+        System.out.println("3333333333333333");
+        //validatePwd(member, pwd_check);
+        System.out.println("4444444444444444");
         memberRepository.save(member);
+        System.out.println("5555555555555555");
         return member.getId();
+    }
+
+    private void validatePwd(Member member, String pwd_check) {
+        if(member.getPwd() != pwd_check) {
+            throw new IllegalStateException("비밀번호가 일치하지 않습니다.");
+        }
     }
 
     // 중복 검증
     private void validateDuplicateMember(Member member){
-        Optional<Member> result = memberRepository.findById(member.getId());
-        result.ifPresent(m->{
-            throw new IllegalStateException("이미 존재하는 회원입니다.");
-        });
+        memberRepository.findById(member.getId())
+                .ifPresent(m->{
+                    throw new IllegalStateException("이미 존재하는 회원입니다.");
+                });
 
     }
 

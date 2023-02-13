@@ -19,19 +19,23 @@ public class JoinController {
     }
 
 
-    @GetMapping("members/joinForm")
+    @GetMapping("/members/joinForm")
     public String joinForm() {
         return "members/join";
     }
 
-    @PostMapping("members/join")
+    @PostMapping("/members/join")
     public String create(MemberForm form){
         Member member = new Member();
+        System.out.println(form.getId());
         member.setId(form.getId());
         member.setPwd(form.getPwd());
+        System.out.println("111111111111111");
 
-        memberService.join(member);
+        memberService.join(member, form.getPwd_check());
 
-        return "home";
+        System.out.println("222222222222222");
+
+        return "redirect:/";
     }
 }
