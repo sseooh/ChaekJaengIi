@@ -45,7 +45,7 @@ public class MemberService {
     }
 
     public boolean login(String id, String pwd) {
-        if(!memberRepository.findById(id).isEmpty() && memberRepository.findById(id).equals(memberRepository.findByPwd(pwd))) return true;
+        if(!memberRepository.findById(id).isEmpty() && memberRepository.findById(id).get().getPwd().equals(pwd)) return true;
         else return false;
     }
 
