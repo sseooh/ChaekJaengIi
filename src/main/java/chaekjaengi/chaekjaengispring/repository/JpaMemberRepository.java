@@ -13,18 +13,27 @@ public class JpaMemberRepository implements MemberRepository{
     public JpaMemberRepository(EntityManager em) {
         this.em = em;
     }
+
     @Override
     public Member save(Member member) {
-        em.persist(member); //영구 저장?
+        em.persist(member);
         return member;
     }
 
+    /**
+     * 여기 둘 중 뭐할지 보기
+     */
     @Override
     public Optional<Member> findById(String id) {
+
         List<Member> result = em.createQuery("select m from Member m where m.id = :id", Member.class)
                 .setParameter("id", id)
                 .getResultList();
         return result.stream().findAny();
+
+        // 2번 Member member = em.find(Member.class, id);
+        //return Optional.ofNullable(member);
+
     }
 
     @Override
@@ -33,6 +42,11 @@ public class JpaMemberRepository implements MemberRepository{
                 .setParameter("pwd", pwd)
                 .getResultList();
         return result.stream().findAny();
-
     }
+
+    @Override
+    public List<Member> findAll() { // 서현 추가
+        return em.createQuery("select m from Member m", Member.class).getResultList();
+    }
+
 }

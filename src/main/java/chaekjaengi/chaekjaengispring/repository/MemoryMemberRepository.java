@@ -3,11 +3,9 @@ package chaekjaengi.chaekjaengispring.repository;
 import chaekjaengi.chaekjaengispring.domain.Member;
 import org.springframework.stereotype.Repository;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
-
+//@Repository
 public class MemoryMemberRepository implements MemberRepository {
 
     private static Map<String, Member> store = new HashMap<>();
@@ -33,9 +31,16 @@ public class MemoryMemberRepository implements MemberRepository {
     }
 
 
+
+    @Override
+    public List<Member> findAll() {
+        return new ArrayList<>(store.values());
+    }
+
     public void clearStore(){
         store.clear();
     }
+
 
 
 }
