@@ -23,11 +23,9 @@ public class MemberService {
 
     public String join(Member member, String pwd_check){
         validateDuplicateMember(member);
-        System.out.println("3333333333333333");
         //validatePwd(member, pwd_check);
-        System.out.println("4444444444444444");
         memberRepository.save(member);
-        System.out.println("5555555555555555");
+
         return member.getId();
     }
 
