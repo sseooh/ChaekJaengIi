@@ -25,17 +25,13 @@ public class MainPageController {
         Member loginMember = memberService.login(form.getId(), form.getPwd());
 
         if(loginMember == null) {
-            return "home";
+            return "redirect:/";
         }
 
         HttpSession session = request.getSession();
         session.setAttribute(SessionConstants.LOGIN_MEMBER, loginMember);
 
         return "mainPage";
-
-        /**
-         * 로그아웃 기능 구현 필요
-         */
 
         /*
         if(memberService.login(form.getId(), form.getPwd())) {
@@ -46,6 +42,16 @@ public class MainPageController {
             return "home";
         }
          */
+    }
+
+    @PostMapping("/logout")
+    public String Logout(HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        if(session != null) {
+            session.invalidate();
+        }
+
+        return "redirect:/";
     }
 
 }
