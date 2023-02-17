@@ -4,9 +4,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import chaekjaengi.chaekjaengispring.domain.Member;
 import chaekjaengi.chaekjaengispring.repository.MemberRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -44,9 +41,21 @@ public class MemberService {
 
     }
 
-    public boolean login(String id, String pwd) {
-        if(!memberRepository.findById(id).isEmpty() && memberRepository.findById(id).get().getPwd().equals(pwd)) return true;
+    public Member login(String id, String pwd) {
+
+        // 아이디와 비밀번호 일치하는 경우 해당 Member 리턴
+        // 일치하지 않는 경우 null 리턴
+        return memberRepository.findById(id)
+                .filter(m -> m.getPwd().equals(pwd))
+                .orElse(null);
+        /*
+        if(!memberRepository.findById(id).isEmpty() && memberRepository.findById(id).get().getPwd().equals(pwd)) {
+            //HttpSession session = request.getSession();
+            //session.setAttribute(SessionConstants.LOGIN_MEMBER, loginMember);
+            return true;
+        }
         else return false;
+         */
     }
 
     public List<Member> findMembers() {
