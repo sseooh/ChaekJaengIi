@@ -34,7 +34,7 @@ public class MemberServiceTest {
         member.setPwd("12345");
 
         //when
-        String saveId = memberService.join(member);
+        String saveId = memberService.join(member, "12345");
 
         //then
         Member findMember = memberRepository.findById(saveId).get();
@@ -51,9 +51,9 @@ public class MemberServiceTest {
         member2.setId("leejieun");
 
         //when
-        memberService.join(member1);
+        memberService.join(member1, "12345");
 
-        IllegalStateException e = assertThrows(IllegalStateException.class, () -> memberService.join(member2));
+        IllegalStateException e = assertThrows(IllegalStateException.class, () -> memberService.join(member2, "123"));
                                  // 뒤의 로직이 실행이 될 때 앞의 예외가 터짐
         assertThat(e.getMessage()).isEqualTo("이미 존재하는 회원입니다.");
         //메세지가 같은지 확인
