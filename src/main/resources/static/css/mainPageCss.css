@@ -1,3 +1,10 @@
 .webTitle {
     text-align: center;
 }
+
+#logoutBtn {
+    border-radius: 50%;
+    height:50px;
+    width:50px;
+    float:right;
+}

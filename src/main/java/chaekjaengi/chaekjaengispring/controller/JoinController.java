@@ -39,6 +39,27 @@ public class JoinController {
         member.setId(form.getId());
         member.setPwd(form.getPwd());
 
+        String result = memberService.join(member, form.getPwd_check());
 
+        switch (result) {
+            case "success":
+                model.addAttribute("msg", "회원가입이 완료되었습니다.");
+                model.addAttribute("url", "/home");
+                break;
+            case "idCheck fail":
+                model.addAttribute("msg", "중복된 id가 존재합니다.");
+                model.addAttribute("url", "/");
+                break;
+            case "pwdCheck fail":
+                model.addAttribute("msg", "비밀번호가 다릅니다.");
+                model.addAttribute("url", "/");
+                break;
+            case "fail":
+                model.addAttribute("msg", "중복된 id가 존재하며, 비밀번호가 다릅니다.");
+                model.addAttribute("url", "/");
+                break;
+        }
+
+        return "alert";
     }
 }
