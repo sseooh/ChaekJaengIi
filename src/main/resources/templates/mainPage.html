@@ -12,9 +12,14 @@
     <div>
         <h1 class="webTitle">책쟁이</h1>
         <br>
+        <form action="/logout" method="post">
+            <button type="submit" onclick="location.href='home.html">로그아웃</button>
+        </form>
         <hr>
 
         <!--
+        th:onclick=""|location.href="'@{/logout}'|"
+        onclick="location.href='home.html"
         <form action="/members/login" method="post">
             <div class="form-group">
                 <div class="outline-class">
