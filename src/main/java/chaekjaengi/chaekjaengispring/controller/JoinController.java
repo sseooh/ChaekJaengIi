@@ -52,23 +52,28 @@ public class JoinController {
         member.setId(form.getId());
         member.setPwd(form.getPwd());
 
-        // 회원가입 성공 (id 중복 x, pwd 확인 o)
-        if(memberService.join(member, form.getPwd_check()) == true){
-            model.addAttribute("msg", "회원가입이 완료되었습니다.");
-            model.addAttribute("url", "/home");
-            return "alert";
+        String result = memberService.join(member, form.getPwd_check());
 
-        } else{ //회원가입 실패
-            if(memberService.idCheck==false){ //id 중복
-                if(memberService.pwdCheck==false){ //pwd 다름
-                    model.addAttribute("msg", "중복된 id가 존재하며, 비밀번호가 다릅니다.");
-                } else
-                    model.addAttribute("msg", "중복된 id가 존재합니다.");
-            }else
+        switch (result) {
+            case "success":
+                model.addAttribute("msg", "회원가입이 완료되었습니다.");
+                model.addAttribute("url", "/home");
+                break;
+            case "idCheck fail":
+                model.addAttribute("msg", "중복된 id가 존재합니다.");
+                model.addAttribute("url", "/");
+                break;
+            case "pwdCheck fail":
                 model.addAttribute("msg", "비밀번호가 다릅니다.");
-
-            model.addAttribute("url", "/");
-            return "alert";
+                model.addAttribute("url", "/");
+                break;
+            case "fail":
+                model.addAttribute("msg", "중복된 id가 존재하며, 비밀번호가 다릅니다.");
+                model.addAttribute("url", "/");
+                break;
         }
+
+        return "alert";
+
     }
 }

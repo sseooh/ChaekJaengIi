@@ -22,22 +22,27 @@ public class MemberService {
         this.memberRepository = memberRepository;
     }
 
-    public boolean join(Member member, String pwd_check){
+    public String join(Member member, String pwd_check){
         idCheck = validateDuplicateMember(member);
         pwdCheck = validatePwd(member, pwd_check);
         if(idCheck && pwdCheck) {
             memberRepository.save(member);
+            return "success";
+        } else if(idCheck) {
+            return "pwdCheck fail";
+        } else if(pwdCheck) {
+            return "idCheck fail";
+        } else {
+            return "fail";
         }
 
-        return idCheck && pwdCheck;
+        //return idCheck && pwdCheck;
     }
 
     private boolean validatePwd(Member member, String pwd_check) {
         if(member.getPwd().equals(pwd_check)) {
-            System.out.println("33333333333");
             return true;
         }else
-            System.out.println("4444444444444");
             return false;
     }
 
@@ -45,11 +50,9 @@ public class MemberService {
     // 중복 검증
     private boolean validateDuplicateMember(Member member){
         if(memberRepository.findById(member.getId()).isPresent()){
-            System.out.println("111111111111111");
             return false;
         }
         else
-            System.out.println("222222222222222");
             return true;
     }
 
