@@ -4,9 +4,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import chaekjaengi.chaekjaengispring.domain.Member;
 import chaekjaengi.chaekjaengispring.repository.MemberRepository;
-import java.util.Optional;
-import java.util.List;
-
 
 //@Service
 
@@ -35,8 +32,6 @@ public class MemberService {
         } else {
             return "fail";
         }
-
-        //return idCheck && pwdCheck;
     }
 
     private boolean validatePwd(Member member, String pwd_check) {
@@ -63,14 +58,7 @@ public class MemberService {
         return memberRepository.findById(id)
                 .filter(m -> m.getPwd().equals(pwd))
                 .orElse(null);
-        /*
-        if(!memberRepository.findById(id).isEmpty() && memberRepository.findById(id).get().getPwd().equals(pwd)) {
-            //HttpSession session = request.getSession();
-            //session.setAttribute(SessionConstants.LOGIN_MEMBER, loginMember);
-            return true;
-        }
-        else return false;
-         */
+
     }
 
     /*

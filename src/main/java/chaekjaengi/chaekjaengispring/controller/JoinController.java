@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.sql.SQLOutput;
+
 @Controller
 public class JoinController {
 
@@ -30,21 +32,6 @@ public class JoinController {
         return "members/join";
     }
 
-
-   /* @PostMapping("/members/join")
-    public String create(MemberForm form) {
-        Member member = new Member();
-        member.setId(form.getId());
-        member.setPwd(form.getPwd());
-
-        if (memberService.join(member, form.getPwd_check()) == false) {
-
-        }
-
-        return "redirect:/";
-    }
-
-    */
 
     @RequestMapping(value = "/members/join", method = RequestMethod.POST, produces = "application/html; charset=UTF-8")
     public String joinCheck (Model model, MemberForm form)throws Exception  {
@@ -74,6 +61,5 @@ public class JoinController {
         }
 
         return "alert";
-
     }
 }
