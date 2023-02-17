@@ -20,9 +20,11 @@ public class JpaMemberRepository implements MemberRepository{
         return member;
     }
 
+
     /**
      * 여기 둘 중 뭐할지 보기
      */
+
     @Override
     public Optional<Member> findById(String id) {
 
@@ -33,7 +35,6 @@ public class JpaMemberRepository implements MemberRepository{
 
         // 2번 Member member = em.find(Member.class, id);
         //return Optional.ofNullable(member);
-
     }
 
     @Override
