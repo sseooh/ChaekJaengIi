@@ -6,7 +6,7 @@ import javax.persistence.EntityManager;
 import java.util.List;
 import java.util.Optional;
 
-public class JpaMemberRepository implements MemberRepository {
+public class JpaMemberRepository implements MemberRepository{
 
     private final EntityManager em;
 
@@ -14,6 +14,7 @@ public class JpaMemberRepository implements MemberRepository {
         this.em = em;
     }
 
+    @Override
     public Member save(Member member) {
         em.persist(member);
         return member;
@@ -21,20 +22,19 @@ public class JpaMemberRepository implements MemberRepository {
 
 
     /**
-     *
-     * 확인하기
+     * 여기 둘 중 뭐할지 보기
      */
+
     @Override
     public Optional<Member> findById(String id) {
-        /*
+
         List<Member> result = em.createQuery("select m from Member m where m.id = :id", Member.class)
                 .setParameter("id", id)
                 .getResultList();
         return result.stream().findAny();
 
-         */
-        Member member = em.find(Member.class, id);
-        return Optional.ofNullable(member);
+        // 2번 Member member = em.find(Member.class, id);
+        //return Optional.ofNullable(member);
     }
 
     @Override
@@ -46,7 +46,7 @@ public class JpaMemberRepository implements MemberRepository {
     }
 
     @Override
-    public List<Member> findAll() {
+    public List<Member> findAll() { // 서현 추가
         return em.createQuery("select m from Member m", Member.class).getResultList();
     }
 

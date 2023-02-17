@@ -30,6 +30,8 @@ public class MemoryMemberRepository implements MemberRepository {
                 .findAny();
     }
 
+
+
     @Override
     public List<Member> findAll() {
         return new ArrayList<>(store.values());
@@ -38,6 +40,7 @@ public class MemoryMemberRepository implements MemberRepository {
     public void clearStore(){
         store.clear();
     }
+
 
 
 }
