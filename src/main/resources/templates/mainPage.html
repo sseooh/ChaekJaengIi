@@ -11,13 +11,34 @@
 <div class="container">
     <div>
         <h1 class="webTitle">책쟁이</h1>
-        <br>
         <form action="/logout" method="post">
             <button id="logoutBtn" type="submit" onclick="location.href='home.html">로그아웃</button>
         </form>
         <hr>
 
+        <table id="main">
+            <thead>
+            <tr>
+                <th>제목</th>
+                <th>사진</th>
+                <th>저자</th>
+                <th>출판사</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <tr th:each="board: ${list}">
+                <td th:text="${board.title}"></td>
+                <td><img th:src="${board.cover}" style="width:60%"></td>
+                <td th:text="${board.author}"></td>
+                <td th:text="${board.publisher}"></td>
+                </tr>
+            </tr>
+            </tbody>
+        </table>
+
         <!--
+        th:text="${board.cover}"
         th:onclick=""|location.href="'@{/logout}'|"
         onclick="location.href='home.html"
         <form action="/members/login" method="post">
