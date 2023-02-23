@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+  <link rel="stylesheet" type="text/css" th:href="@{/css/reviewListCss.css}">
+  <link rel="stylesheet" type="text/css" href="css/reviewListCss.css">
+  <title>책쟁이</title>
+</head>
+<body>
+
+<div class="container">
+  <div>
+    <h1 class="webTitle">책쟁이</h1>
+    <br>
+    <form action="/logout" method="post">
+      <button id="logoutBtn" type="submit" onclick="location.href='home.html">로그아웃</button>
+    </form>
+    <hr>
+
+    <div class="form-group">
+      <img class="book"
+           src="https://shopping-phinf.pstatic.net/main_3731353/37313533623.20230216071235.jpg?type=w300"
+           alt="이미지 없음">
+      <input type="text" id="title" name="title" value="세이노의 가르침" readonly>
+
+
+
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
