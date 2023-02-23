@@ -16,6 +16,7 @@
         </form>
         <hr>
 
+        <!--
         <table id="main">
             <thead>
             <tr>
@@ -36,6 +37,17 @@
             </tr>
             </tbody>
         </table>
+        -->
+
+        <div th:each="board: ${list}">
+            <img th:src="${board.cover}">
+            <span th:text="${board.title}"></span>
+            저자 <span th:text="${board.author}"></span>
+            출판사 <span th:text="${board.publisher}"></span>
+
+            <button type="button" id="getReview">리뷰 보기</button>
+            <button type="button" id="writeReview">리뷰 작성</button>
+        </div>
 
         <!--
         th:text="${board.cover}"
