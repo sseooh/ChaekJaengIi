@@ -7,6 +7,7 @@ public class MemberForm {
 
     private String pwd_check;
 
+
     public String getId(){
         return id;
     }
