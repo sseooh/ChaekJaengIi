@@ -20,8 +20,9 @@ create table board
 create table review
 (
  title varchar(255),
+ id varchar(255),
  name varchar(255),
- content varchar(500),
+ content varchar(1500),
 
  primary key (title)
 );
