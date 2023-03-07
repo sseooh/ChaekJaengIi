@@ -5,6 +5,8 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/mainPageCss.css}">
     <link rel="stylesheet" type="text/css" href="css/mainPageCss.css">
     <title>책쟁이</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="js/writeBookReview.js"></script>
 </head>
 <body>
 
@@ -12,9 +14,10 @@
     <div>
         <h1 class="webTitle">책쟁이</h1>
         <form action="/logout" method="post">
-            <button id="logoutBtn" type="submit" onclick="location.href='home.html">로그아웃</button>
+            <button id="logoutBtn" type="submit" onclick="location.href='home.html'">로그아웃</button>
         </form>
         <hr>
+    </div>
 
         <!--
         <table id="main">
@@ -39,15 +42,23 @@
         </table>
         -->
 
-        <div th:each="board: ${list}">
-            <img th:src="${board.cover}">
-            <span th:text="${board.title}"></span>
-            저자 <span th:text="${board.author}"></span>
-            출판사 <span th:text="${board.publisher}"></span>
+    <div th:each="board: ${list}" style="width: 30%;">
+        <div style="width: 40%; float: left;">
+            <img th:src="${board.cover}" style="width: 100%;">
+        </div>
+
+        <div style="width: 60%; float: left;">
+            <span th:text="${board.title}" style="color: #606060; font-size: 130%; padding-left: 5%"></span><br>
+            <span style="color: #9D9D9D; font-size: 70%; padding-left: 5%;">저자</span>
+            <span th:text="${board.author}" style="font-size: 70%;"></span>
+            <span style="color: #9D9D9D; font-size: 70%;">출판사</span>
+            <span th:text="${board.publisher}" style="font-size: 70%;"></span>
+            <br>
 
             <button type="button" id="getReview">리뷰 보기</button>
-            <button type="button" id="writeReview">리뷰 작성</button>
+            <button type="button" id="writeReview" onclick="getTitle([[${board.title}]])">리뷰 작성</button>
         </div>
+    </div>
 
         <!--
         th:text="${board.cover}"
@@ -71,7 +82,6 @@
 
         </form>
         -->
-    </div>
 </div>
 
 </body>
