@@ -2,7 +2,9 @@ package chaekjaengi.chaekjaengispring.service;
 
 import chaekjaengi.chaekjaengispring.domain.Review;
 import chaekjaengi.chaekjaengispring.repository.ReviewRepository;
+import org.springframework.transaction.annotation.Transactional;
 
+@Transactional
 public class ReviewService {
     private final ReviewRepository reviewRepository;
 

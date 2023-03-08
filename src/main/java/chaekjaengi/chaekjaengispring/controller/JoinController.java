@@ -29,7 +29,7 @@ public class JoinController {
 
     @GetMapping("/members/joinForm")
     public String joinForm() {
-        return "/members/join";
+        return "/review";
     }
 
 
