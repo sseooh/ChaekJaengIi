@@ -10,12 +10,16 @@ public class MemoryMemberRepository implements MemberRepository {
 
     private static Map<String, Member> store = new HashMap<>();
 
+    /*
+
     public String getReviewId() {
         return reviewId;
     }
 
+
     String reviewId;
-    Optional ID;
+    Optional<Member> ID;
+     */
 
     @Override
     public Member save(Member member) {
@@ -25,12 +29,17 @@ public class MemoryMemberRepository implements MemberRepository {
 
     @Override
     public Optional<Member> findById(String id) {
+        return (store.values().stream()
+                .filter(member -> member.getId().equals(id))
+                .findAny());
+        /*
         ID =(store.values().stream()
                 .filter(member -> member.getId().equals(id))
                 .findAny());
-        reviewId = String.valueOf(ID);
+        reviewId = String.valueOf(ID.get().getId());
         return ID;
 
+         */
     }
 
     @Override

@@ -10,7 +10,6 @@ public class Member {
     private String id;
     private String pwd;
 
-    Long num;
 
     public String getId(){
         return id;

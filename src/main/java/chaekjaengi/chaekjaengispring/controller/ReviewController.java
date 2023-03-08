@@ -28,11 +28,10 @@ public class ReviewController {
     @RequestMapping(value = "/saveReview", method = RequestMethod.POST, produces = "application/html; charset=UTF-8")
     public String storeCheck(ReviewForm reviewForm)throws Exception{
 
-        System.out.println("Test!");
             Review review = new Review();
-
             review.setTitle("원씽");
-            review.setId(memoryMemberRepository.getReviewId());
+            review.setId("");
+            //review.setId(memoryMemberRepository.getReviewId());
             review.setName(reviewForm.getName());
             review.setContent(reviewForm.getContent());
 

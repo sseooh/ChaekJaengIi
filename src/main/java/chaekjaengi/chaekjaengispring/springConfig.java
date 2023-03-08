@@ -39,8 +39,10 @@ public class springConfig {
         return new ReviewService(reviewRepository());
     }
 
-    @Bean
+    /*@Bean
     public MemoryMemberRepository memoryMemberRepository(){
         return new MemoryMemberRepository();
     }
+
+     */
 }
