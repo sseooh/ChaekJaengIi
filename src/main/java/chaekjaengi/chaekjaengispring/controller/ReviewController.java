@@ -7,9 +7,7 @@ import chaekjaengi.chaekjaengispring.service.ReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class ReviewController {
@@ -26,14 +24,15 @@ public class ReviewController {
         this.memoryMemberRepository = memoryMemberRepository;
     }
 
-    @RequestMapping(value = "/mainPage", method = RequestMethod.POST, produces = "application/html; charset=UTF-8")
+
+    @RequestMapping(value = "/saveReview", method = RequestMethod.POST, produces = "application/html; charset=UTF-8")
     public String storeCheck(ReviewForm reviewForm)throws Exception{
 
+        System.out.println("Test!");
             Review review = new Review();
 
-            review.setTitle("이지은의 가르침");
-            review.setId("leejieun");
-            //review.setId(memoryMemberRepository.getReviewId());
+            review.setTitle("원씽");
+            review.setId(memoryMemberRepository.getReviewId());
             review.setName(reviewForm.getName());
             review.setContent(reviewForm.getContent());
 
@@ -41,23 +40,10 @@ public class ReviewController {
             return "/mainPage";
     }
 
-    @PostMapping("/review")
+    @PostMapping("review")
     public String getWritePage(String title, Model model) {
         model.addAttribute("title", title);
         return "/review";
     }
-
-
-
-    /*
-    @ResponseBody
-    @RequestMapping(value = "bookReview.write", method = RequestMethod.POST)
-    public void toReview(String title, HttpServletRequest request) {
-        //System.out.println(request.getParameter("title"));
-        //System.out.println(title);
-        //return "reviewList";
-    }
-
-     */
 
 }
