@@ -9,9 +9,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-
-import javax.servlet.http.HttpServletRequest;
 
 @Controller
 public class ReviewController {
@@ -25,13 +22,14 @@ public class ReviewController {
         this.reviewRepository = reviewRepository;
     }
 
-    @RequestMapping(value = "/mainPage", method = RequestMethod.POST, produces = "application/html; charset=UTF-8")
+    @RequestMapping(value = "/review", method = RequestMethod.POST, produces = "application/html; charset=UTF-8")
     public void storeCheck(ReviewForm reviewForm)throws Exception{
 
             Review review = new Review();
             //책 제목이랑 아이디 받아오기
-            review.setTitle("test");
-            review.setId("testId");
+
+            review.setTitle("이지은의 가르침");
+            review.setId("leejieun");
             review.setName(reviewForm.getName());
             review.setContent(reviewForm.getContent());
 

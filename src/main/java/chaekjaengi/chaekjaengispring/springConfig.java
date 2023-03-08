@@ -28,17 +28,17 @@ public class springConfig {
     }
 
     @Bean
-    public ReviewService reviewService() {
-        return new ReviewService(reviewRepository());
-    }
-
-    @Bean
     public MemberRepository memberRepository() {
         return new JpaMemberRepository(em);
     }
 
     @Bean
-    public ReviewRepository reviewRepository() {
+    public ReviewRepository reviewRepository(){
         return new JpaReviewRepository(em);
+    }
+
+    @Bean
+    public ReviewService reviewService(){
+        return new ReviewService(reviewRepository());
     }
 }
