@@ -31,6 +31,7 @@ public class springConfig {
     public MemberRepository memberRepository() {
         return new JpaMemberRepository(em);
     }
+
     @Bean
     public ReviewRepository reviewRepository(){
         return new JpaReviewRepository(em);

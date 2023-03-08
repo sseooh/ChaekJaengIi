@@ -5,6 +5,7 @@ import javax.persistence.Id;
 
 @Entity
 public class Review {
+
     @Id
     public String title;
     public String id;
