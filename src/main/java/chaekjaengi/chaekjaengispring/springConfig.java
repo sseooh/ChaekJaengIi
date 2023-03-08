@@ -1,8 +1,11 @@
 package chaekjaengi.chaekjaengispring;
 
 import chaekjaengi.chaekjaengispring.repository.JpaMemberRepository;
+import chaekjaengi.chaekjaengispring.repository.JpaReviewRepository;
 import chaekjaengi.chaekjaengispring.repository.MemberRepository;
+import chaekjaengi.chaekjaengispring.repository.ReviewRepository;
 import chaekjaengi.chaekjaengispring.service.MemberService;
+import chaekjaengi.chaekjaengispring.service.ReviewService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -25,7 +28,17 @@ public class springConfig {
     }
 
     @Bean
+    public ReviewService reviewService() {
+        return new ReviewService(reviewRepository());
+    }
+
+    @Bean
     public MemberRepository memberRepository() {
         return new JpaMemberRepository(em);
+    }
+
+    @Bean
+    public ReviewRepository reviewRepository() {
+        return new JpaReviewRepository(em);
     }
 }

@@ -5,8 +5,11 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/mainPageCss.css}">
     <link rel="stylesheet" type="text/css" href="css/mainPageCss.css">
     <title>책쟁이</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!--
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="js/writeBookReview.js"></script>
+    -->
 </head>
 <body>
 
@@ -56,7 +59,7 @@
             <br>
 
             <button type="button" id="getReview">리뷰 보기</button>
-            <button type="button" id="writeReview" onclick="getTitle([[${board.title}]])">리뷰 작성</button>
+            <button type="button" id="writeReview" th:data="${board.title}" onclick="getTitle(this.getAttribute('data'))">리뷰 작성</button>
         </div>
     </div>
 
@@ -83,6 +86,8 @@
         </form>
         -->
 </div>
+
+<script src="js/writeBookReview.js"></script>
 
 </body>
 </html>

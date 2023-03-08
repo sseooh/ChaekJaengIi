@@ -1,6 +1,12 @@
 package chaekjaengi.chaekjaengispring.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Review {
+
+    @Id
     public String title;
     public String id;
     public String name;
