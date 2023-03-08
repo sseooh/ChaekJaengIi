@@ -1,5 +1,7 @@
 function getTitle(bookTitle) {
-    //alert(title);
+    console.log(bookTitle);
+    //alert(bookTitle);
+
     /*
     $.ajax({
         url: "/review",
@@ -8,14 +10,17 @@ function getTitle(bookTitle) {
             title : bookTitle
         },
         success: function (data) {
+            console.log(data);
             //alert(data);
-            document.location.href = data;
+            //location.href = data;
         },
         error: function () {
             console.log("제목 전달 오류");
         }
     });
+
      */
+
     let f = document.createElement('form');
 
     let obj;
@@ -26,7 +31,8 @@ function getTitle(bookTitle) {
 
     f.appendChild(obj);
     f.setAttribute('method', 'post');
-    f.setAttribute('action', 'bookReview/write');
+    f.setAttribute('action', 'review');
     document.body.appendChild(f);
     f.submit();
+
 }

@@ -1,16 +1,27 @@
 package chaekjaengi.chaekjaengispring.domain;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class Review {
 
-    @Id
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long num;
     public String title;
     public String id;
     public String name;
     public String content;
+
+    public Long getNum() {
+        return num;
+    }
+
+    public void setNum(Long num) {
+        this.num = num;
+    }
 
     public String getTitle() {
         return title;
