@@ -1,6 +1,7 @@
 package chaekjaengi.chaekjaengispring.controller;
 
 import chaekjaengi.chaekjaengispring.domain.Review;
+import chaekjaengi.chaekjaengispring.repository.MemoryMemberRepository;
 import chaekjaengi.chaekjaengispring.repository.ReviewRepository;
 import chaekjaengi.chaekjaengispring.service.ReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,30 +17,34 @@ public class ReviewController {
     private final ReviewService reviewService;
     private final ReviewRepository reviewRepository;
 
+    private final MemoryMemberRepository memoryMemberRepository;
+
     @Autowired
-    public ReviewController(ReviewService reviewService, ReviewRepository reviewRepository) {
+    public ReviewController(ReviewService reviewService, ReviewRepository reviewRepository, MemoryMemberRepository memoryMemberRepository) {
         this.reviewService = reviewService;
         this.reviewRepository = reviewRepository;
+        this.memoryMemberRepository = memoryMemberRepository;
     }
 
-    @RequestMapping(value = "/review", method = RequestMethod.POST, produces = "application/html; charset=UTF-8")
-    public void storeCheck(ReviewForm reviewForm)throws Exception{
+    @RequestMapping(value = "/mainPage", method = RequestMethod.POST, produces = "application/html; charset=UTF-8")
+    public String storeCheck(ReviewForm reviewForm)throws Exception{
 
             Review review = new Review();
-            //책 제목이랑 아이디 받아오기
 
             review.setTitle("이지은의 가르침");
             review.setId("leejieun");
+            //review.setId(memoryMemberRepository.getReviewId());
             review.setName(reviewForm.getName());
             review.setContent(reviewForm.getContent());
 
             reviewService.store(review);
+            return "/mainPage";
     }
 
-    @PostMapping("bookReview/write")
+    @PostMapping("/review")
     public String getWritePage(String title, Model model) {
         model.addAttribute("title", title);
-        return "review";
+        return "/review";
     }
 
 
