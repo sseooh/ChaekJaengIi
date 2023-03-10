@@ -63,6 +63,8 @@ public class ReviewController {
     public String getReviewPage(String title, Model model) {
         Optional<Board> board = boardService.getBookInfo(title);
 
+        model.addAttribute("list",reviewService.getTitleInfo(board.get().title));
+
         model.addAttribute("cover", board.get().cover);
         model.addAttribute("title", board.get().title);
         model.addAttribute("author", board.get().author);

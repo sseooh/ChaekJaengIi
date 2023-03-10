@@ -17,23 +17,21 @@ public class JoinController {
     private final MemberService memberService;
 
     private final MemberRepository memberRepository;
-    private final ReviewService reviewService;
+
 
 
 
 
     @Autowired
-    public JoinController(MemberService memberService, MemberRepository memberRepository, ReviewService reviewService) {
+    public JoinController(MemberService memberService, MemberRepository memberRepository) {
         this.memberService = memberService;
         this.memberRepository = memberRepository;
-        this.reviewService = reviewService;
     }
 
 
     @GetMapping("/members/joinForm")
     public String joinForm(Model model) {
-        model.addAttribute("list",reviewService.getTitleInfo("원씽"));
-        return "/reviewList";
+        return "/members/join";
     }
 
 
