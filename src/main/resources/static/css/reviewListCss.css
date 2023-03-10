@@ -17,26 +17,11 @@ img {
     object-fit: cover;
 }
 
-#title{
-    border-left-width:0px;
-    border-right-width:0px;
-    border-top-width:0px;
-    border-bottom-width:0px;
+.form-group{
+    display:grid
 
 }
 
-#author{
-    border-left-width:0px;
-    border-right-width:0px;
-    border-top-width:0px;
-    border-bottom-width:0px;
-
-}
-
-#publisher{
-    border-left-width:0px;
-    border-right-width:0px;
-    border-top-width:0px;
-    border-bottom-width:0px;
+.outline-class{
 
 }

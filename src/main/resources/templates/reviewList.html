@@ -18,27 +18,26 @@
     <hr>
   </div>
 
-    <div th:each="review: ${list}" style="width: 30%;">
-      <div style="width: 40%; float: left;">
-        <img th:src="${cover}" style="width: 100%;">
-      </div>
+    <div th:each="review: ${list}" class="mom">
+      <span class="form-group">
+        <img th:src="${cover}" id="cover" name="cover" style="width: 15%;"><br>
+          <span th:text="${title}" style="color: #606060; font-size: 130%; padding-left: 5%"></span><br>
+          <span style="color: #9D9D9D; font-size: 100%; padding-left: 5%;">저자
+           <span th:text="${author}" style="font-size: 100%; color: black"></span></span>
+          <span style="color: #9D9D9D; font-size: 100%; padding-left: 5%;">출판사
+            <span th:text="${publisher}" style="font-size: 100%; color: black"></span></span>
+          <br>
+      </span>
 
-      <div style="width: 60%; float: left;">
-        <span th:text="${title}" style="color: #606060; font-size: 130%; padding-left: 5%"></span><br>
-        <span style="color: #9D9D9D; font-size: 70%; padding-left: 5%;">저자</span>
-        <span th:text="${author}" style="font-size: 70%;"></span>
-        <span style="color: #9D9D9D; font-size: 70%;">출판사</span>
-        <span th:text="${publisher}" style="font-size: 70%;"></span>
-        <br>
-
-      <div style="width: 60%; float: left;">
-        <span th:text="${review.id}" style="color: #606060; font-size: 130%; padding-left: 5%"></span><br>
-        <span th:text="${review.name}" style="color: #606060; font-size: 130%; padding-left: 5%"></span><br>
-        <span th:text="${review.content}" style="color: #606060; font-size: 130%; padding-left: 5%"></span><br>
-      </div>
-
+        <div class= "outline-class" style="width: 40%;">
+            <span th:text="${review.id}" style="color: #606060; font-size: 130%; padding-left: 5%"></span>
+            <span th:text="${review.name}" style="color: #606060; font-size: 130%; padding-left: 5%"></span><br>
+            <span th:text="${review.content}" style="color: #606060; font-size: 130%; padding-left: 5%"></span>
+          </div>
       </div>
   </div>
+
+
 
 </body>
 </html>
