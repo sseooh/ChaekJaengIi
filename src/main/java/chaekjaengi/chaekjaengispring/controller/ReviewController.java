@@ -3,7 +3,6 @@ package chaekjaengi.chaekjaengispring.controller;
 import chaekjaengi.chaekjaengispring.domain.Board;
 import chaekjaengi.chaekjaengispring.domain.Member;
 import chaekjaengi.chaekjaengispring.domain.Review;
-import chaekjaengi.chaekjaengispring.repository.MemoryMemberRepository;
 import chaekjaengi.chaekjaengispring.repository.ReviewRepository;
 import chaekjaengi.chaekjaengispring.service.BoardService;
 import chaekjaengi.chaekjaengispring.service.ReviewService;
@@ -35,16 +34,12 @@ public class ReviewController {
         this.boardService = boardService;
     }
 
+
     @RequestMapping(value = "/saveReview", method = RequestMethod.POST, produces = "application/html; charset=UTF-8")
     public String storeCheck(ReviewForm reviewForm, @SessionAttribute(name = "loginMember") Member member, Model model)throws Exception{
 
-
-        //HttpSession session = request.getSession();
-        //Member constant_member = (Member) session.getAttribute("loginMember").;
-        //String constant_id = constant_member.getId();
-
         Review review = new Review();
-        //책 제목이랑 아이디 받아오기
+
 
         review.setTitle(reviewForm.getTitle());
         review.setId(member.getId());
@@ -57,7 +52,6 @@ public class ReviewController {
 
         return "redirect:/";
     }
-
 
     @PostMapping("review")
     public String getWritePage(String title, Model model) {

@@ -5,10 +5,11 @@ import javax.persistence.*;
 @Entity
 public class Member {
 
-    @Id //@GeneratedValue(strategy = GenerationType.IDENTITY) 이거 무조건 지워야 함!!!!! 이 놈 때문에 시간 엄청 버림....
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY) //이거 무조건 지워야 함!!!!! 이 놈 때문에 시간 엄청 버림....
 
     private String id;
     private String pwd;
+
 
     public String getId(){
         return id;

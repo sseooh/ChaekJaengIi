@@ -25,6 +25,6 @@ create table review
  name varchar(255),
  content varchar(1500),
 
- primary key (title)
+ primary key (num)
 );
 

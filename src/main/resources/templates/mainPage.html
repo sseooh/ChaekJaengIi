@@ -22,28 +22,6 @@
         <hr>
     </div>
 
-        <!--
-        <table id="main">
-            <thead>
-            <tr>
-                <th>제목</th>
-                <th>사진</th>
-                <th>저자</th>
-                <th>출판사</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <tr th:each="board: ${list}">
-                <td th:text="${board.title}"></td>
-                <td><img th:src="${board.cover}" style="width:60%"></td>
-                <td th:text="${board.author}"></td>
-                <td th:text="${board.publisher}"></td>
-                </tr>
-            </tr>
-            </tbody>
-        </table>
-        -->
 
     <div th:each="board: ${list}" style="width: 30%;">
         <div style="width: 40%; float: left;">
@@ -58,7 +36,10 @@
             <span th:text="${board.publisher}" style="font-size: 70%;"></span>
             <br>
 
+
+
             <button type="button" id="getReview" th:data="${board.title}" onclick="getReview(this.getAttribute('data'))">리뷰 보기</button>
+
             <button type="button" id="writeReview" th:data="${board.title}" onclick="getTitle(this.getAttribute('data'))">리뷰 작성</button>
         </div>
     </div>

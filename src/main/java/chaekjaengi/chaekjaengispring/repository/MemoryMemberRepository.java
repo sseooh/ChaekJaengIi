@@ -18,11 +18,11 @@ public class MemoryMemberRepository implements MemberRepository {
 
     @Override
     public Optional<Member> findById(String id) {
-        return store.values().stream()
+        return (store.values().stream()
                 .filter(member -> member.getId().equals(id))
-                .findAny();
-    }
+                .findAny());
 
+    }
 
     @Override
     public Optional<Member> findByPwd(String pwd) {

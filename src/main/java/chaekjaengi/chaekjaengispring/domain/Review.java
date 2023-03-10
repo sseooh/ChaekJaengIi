@@ -10,9 +10,9 @@ public class Review {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long num;
-    public String title;
+    public String title; //책 제목
     public String id;
-    public String name;
+    public String name; // 리뷰 제목
     public String content;
 
     public Long getNum() {

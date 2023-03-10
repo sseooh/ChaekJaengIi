@@ -3,6 +3,7 @@ package chaekjaengi.chaekjaengispring.controller;
 import chaekjaengi.chaekjaengispring.domain.Member;
 import chaekjaengi.chaekjaengispring.repository.MemberRepository;
 import chaekjaengi.chaekjaengispring.service.MemberService;
+import chaekjaengi.chaekjaengispring.service.ReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,26 +11,29 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import java.sql.SQLOutput;
-
 @Controller
 public class JoinController {
 
     private final MemberService memberService;
 
     private final MemberRepository memberRepository;
+    private final ReviewService reviewService;
+
+
 
 
     @Autowired
-    public JoinController(MemberService memberService, MemberRepository memberRepository) {
+    public JoinController(MemberService memberService, MemberRepository memberRepository, ReviewService reviewService) {
         this.memberService = memberService;
         this.memberRepository = memberRepository;
+        this.reviewService = reviewService;
     }
 
 
     @GetMapping("/members/joinForm")
-    public String joinForm() {
-        return "/members/join";
+    public String joinForm(Model model) {
+        model.addAttribute("list",reviewService.getTitleInfo("원씽"));
+        return "/reviewList";
     }
 
 
