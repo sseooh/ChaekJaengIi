@@ -40,7 +40,6 @@ public class ReviewController {
 
         Review review = new Review();
 
-
         review.setTitle(reviewForm.getTitle());
         review.setId(member.getId());
         review.setName(reviewForm.getName());
@@ -48,9 +47,9 @@ public class ReviewController {
 
         reviewService.store(review);
 
-        //model.addAttribute("list", boardService.boardList());
+        model.addAttribute("list", boardService.boardList());
 
-        return "redirect:/";
+        return "/mainPage";
     }
 
     @PostMapping("review")
