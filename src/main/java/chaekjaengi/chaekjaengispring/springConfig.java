@@ -20,7 +20,7 @@ public class springConfig {
     }
 
     @Bean
-    public MemberService memberService(){
+    public MemberService memberService() {
         return new MemberService(memberRepository());
     }
 
@@ -30,13 +30,12 @@ public class springConfig {
     }
 
     @Bean
-    public ReviewRepository reviewRepository(){
+    public ReviewRepository reviewRepository() {
         return new JpaReviewRepository(em);
     }
 
     @Bean
-    public ReviewService reviewService(){
+    public ReviewService reviewService() {
         return new ReviewService(reviewRepository());
     }
-
 }

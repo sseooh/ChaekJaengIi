@@ -47,7 +47,6 @@ public class ReviewController {
 
     @PostMapping("review")
     public String getWritePage(String title, Model model) {
-        System.out.println(title);
         model.addAttribute("title", title);
         return "/review";
     }

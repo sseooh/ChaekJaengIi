@@ -17,30 +17,39 @@
     </form>
     <hr>
 
+    <div th:each="review: ${list}" style="width: 30%;">
+      <div style="width: 60%; float: left;">
+        <span th:text="${review.id}" style="color: #606060; font-size: 130%; padding-left: 5%"></span><br>
+        <span th:text="${review.name}" style="color: #606060; font-size: 130%; padding-left: 5%"></span><br>
+        <span th:text="${review.content}" style="color: #606060; font-size: 130%; padding-left: 5%"></span><br>
+
+
+    </div>
+
+    <!--
     <div class="form-group">
       <img class="book"
            src="https://shopping-phinf.pstatic.net/main_3731353/37313533623.20230216071235.jpg?type=w300"
            alt="이미지 없음">
       <div class="text-group">
 
-        <!--
         <span th:text="${board.title}"></span>
         저자 <span th:text="${board.author}"></span>
         출판사 <span th:text="${board.publisher}"></span>
         </div>
 
-             <div th:each="board: ${list}">
-            <img th:src="${board.cover}">
-            <span th:text="${board.title}"></span>
-            저자 <span th:text="${board.author}"></span>
-            출판사 <span th:text="${board.publisher}"></span>
-        </div>
+                   <div th:each="board: ${list}">
+                  <img th:src="${board.cover}">
+                  <span th:text="${board.title}"></span>
+                  저자 <span th:text="${board.author}"></span>
+                  출판사 <span th:text="${board.publisher}"></span>
+              </div>
 
 
-        <input type="text" id="title" name="title" value="세이노의 가르침" disabled><br>
-        <input type="text" id="author" name="author" value="저자 세이노" disabled>
-        <input type="text" id="publisher" name="publisher" value="출판사 데이원" disabled>
-        -->
+              <input type="text" id="title" name="title" value="세이노의 가르침" disabled><br>
+              <input type="text" id="author" name="author" value="저자 세이노" disabled>
+              <input type="text" id="publisher" name="publisher" value="출판사 데이원" disabled>
+              -->
 
     </div>
   </div>
