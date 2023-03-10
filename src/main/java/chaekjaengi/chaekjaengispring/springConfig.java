@@ -1,6 +1,7 @@
 package chaekjaengi.chaekjaengispring;
 
 import chaekjaengi.chaekjaengispring.repository.*;
+import chaekjaengi.chaekjaengispring.service.BoardService;
 import chaekjaengi.chaekjaengispring.service.MemberService;
 import chaekjaengi.chaekjaengispring.service.ReviewService;
 import org.springframework.context.annotation.Bean;
@@ -38,4 +39,15 @@ public class springConfig {
     public ReviewService reviewService() {
         return new ReviewService(reviewRepository());
     }
+
+    @Bean
+    public BoardRepository boardRepository() {
+        return new JpaBoardRepository(em);
+    }
+
+    @Bean
+    public BoardService boardService() {
+        return new BoardService(boardRepository());
+    }
+
 }
