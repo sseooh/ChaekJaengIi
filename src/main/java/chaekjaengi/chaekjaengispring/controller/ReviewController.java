@@ -34,7 +34,8 @@ public class ReviewController {
 
         Review review = new Review();
 
-        review.setTitle("이지은");
+
+        review.setTitle(reviewForm.getTitle());
         review.setId(member.getId());
         review.setName(reviewForm.getName());
         review.setContent(reviewForm.getContent());
@@ -46,6 +47,7 @@ public class ReviewController {
 
     @PostMapping("review")
     public String getWritePage(String title, Model model) {
+        System.out.println(title);
         model.addAttribute("title", title);
         return "/review";
     }

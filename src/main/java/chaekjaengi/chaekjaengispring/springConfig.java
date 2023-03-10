@@ -39,6 +39,4 @@ public class springConfig {
         return new ReviewService(reviewRepository());
     }
 
-
-
 }
