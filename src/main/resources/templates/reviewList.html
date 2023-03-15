@@ -20,20 +20,22 @@
 
     <div th:each="review: ${list}" class="mom">
       <span class="form-group">
-        <img th:src="${cover}" id="cover" name="cover" style="width: 15%;"><br>
-          <span th:text="${title}" style="color: #606060; font-size: 130%; padding-left: 5%"></span><br>
-          <span style="color: #9D9D9D; font-size: 100%; padding-left: 5%;">저자
-           <span th:text="${author}" style="font-size: 100%; color: black"></span></span>
-          <span style="color: #9D9D9D; font-size: 100%; padding-left: 5%;">출판사
-            <span th:text="${publisher}" style="font-size: 100%; color: black"></span></span>
+        <img th:src="${cover}" id="cover" name="cover"><br>
+          <span th:text="${title}" id="title"></span><br>
+          <span id="저자">저자
+           <span th:text="${author}" id="author"></span></span>
+          <span id="출판사">출판사
+            <span th:text="${publisher}" id="publisher"></span></span>
           <br>
       </span>
 
-        <div class= "outline-class" style="width: 40%;">
-            <span th:text="${review.id}" style="color: #606060; font-size: 130%; padding-left: 5%"></span>
-            <span th:text="${review.name}" style="color: #606060; font-size: 130%; padding-left: 5%"></span><br>
-            <span th:text="${review.content}" style="color: #606060; font-size: 130%; padding-left: 5%"></span>
+        <div class="baby">
+          <span th:text="${review.id}" id="reviewId" style="color: #A3C45E"></span>
+          <span th:text="${review.name}" id="name" style="color: #606060; ="></span><br><br>
+          <div class= "outline-class">
+            <span th:text="${review.content}" id="content" style="color: #606060;"></span>
           </div>
+        </div>
       </div>
   </div>
 
