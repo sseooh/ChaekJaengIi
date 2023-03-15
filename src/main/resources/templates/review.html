@@ -10,27 +10,28 @@
 <body>
 
 <div class="container">
-    <h1 class="webTitle">책쟁이</h1>
-    <form action="/logout" method="post">
-      <button id="logoutBtn" type="submit" onclick="location.href='home.html">로그아웃</button>
-    </form>
+    <div class="main-group">
+        <h1 class="webTitle">책쟁이</h1>
+        <form action="/logout" method="post">
+            <button id="logoutBtn" type="submit" onclick="location.href='home.html">로그아웃</button>
+        </form>
+    </div>
 
 
     <form action="/saveReview" method="post">
       <div class="form-group">
           <input type="text" id="name" name="name" placeholder="제목">
+          <textarea type="text" maxlength="1500" id="content" name="content" placeholder="내용을 입력하세요."></textarea>
+      </div>
 
         <div class="outline-class">
             <div class="textLengthWrap">
                 <p class="textCount">0자</p>
                 <p class="textTotal">/1500자</p>
             </div>
-            <input th:value="${title}" id="title" name="title" >
-          <textarea type="text" maxlength="1500" id="content" name="content" placeholder="내용을 입력하세요."></textarea>
+            <button type="submit" id="writeBtn">작성</button><br>
         </div>
 
-        <button type="submit" id="writeBtn">작성</button><br>
-      </div>
     </form>
 </div>
 <script>
