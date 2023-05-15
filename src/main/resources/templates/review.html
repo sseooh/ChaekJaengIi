@@ -13,13 +13,14 @@
     <div class="main-group">
         <h1 class="webTitle">책쟁이</h1>
         <form action="/logout" method="post">
-            <button id="logoutBtn" type="submit" onclick="location.href='home.html">로그아웃</button>
+            <button id="logoutBtn" type="submit" onclick="location.href='home.html'">로그아웃</button>
         </form>
     </div>
 
 
     <form action="/saveReview" method="post">
       <div class="form-group">
+          <input type="text" id="title" name="title" style="display: none" th:value="${title}">
           <input type="text" id="name" name="name" placeholder="제목">
           <textarea type="text" maxlength="1500" id="content" name="content" placeholder="내용을 입력하세요."></textarea>
       </div>

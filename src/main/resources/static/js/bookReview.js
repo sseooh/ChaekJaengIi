@@ -1,6 +1,6 @@
 function getTitle(bookTitle) {
-    console.log(bookTitle);
-    //alert(bookTitle);
+    // console.log(bookTitle);
+    alert(bookTitle);
 
     /*
     $.ajax({
