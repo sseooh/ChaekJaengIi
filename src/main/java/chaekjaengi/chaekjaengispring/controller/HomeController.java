@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 @Controller
 public class HomeController {
 
-    @GetMapping("/")
+    @GetMapping("/home")
     public String home(@SessionAttribute(name = SessionConstants.LOGIN_MEMBER, required = false)Member loginMember, Model model) {
         // 로그인 되어있지 않은 상태인 경우 로그인 화면으로 이동
         if(loginMember == null) {

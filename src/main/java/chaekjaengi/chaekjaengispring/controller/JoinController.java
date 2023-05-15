@@ -50,15 +50,15 @@ public class JoinController {
                 break;
             case "idCheck fail":
                 model.addAttribute("msg", "중복된 id가 존재합니다.");
-                model.addAttribute("url", "/");
+                model.addAttribute("url", "/members/joinForm");
                 break;
             case "pwdCheck fail":
                 model.addAttribute("msg", "비밀번호가 다릅니다.");
-                model.addAttribute("url", "/");
+                model.addAttribute("url", "/members/joinForm");
                 break;
             case "fail":
                 model.addAttribute("msg", "중복된 id가 존재하며, 비밀번호가 다릅니다.");
-                model.addAttribute("url", "/");
+                model.addAttribute("url", "/members/joinForm");
                 break;
         }
 
