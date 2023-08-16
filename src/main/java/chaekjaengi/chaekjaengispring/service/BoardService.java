@@ -3,6 +3,8 @@ package chaekjaengi.chaekjaengispring.service;
 import chaekjaengi.chaekjaengispring.domain.Board;
 import chaekjaengi.chaekjaengispring.repository.BoardRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -33,4 +35,16 @@ public class BoardService {
     public Optional<Board> getBookInfo(String title) {
         return boardRepository.findBoardByTitle(title);
     }
+
+    public int finAllCnt() {
+        return boardRepository.findAllCnt();
+    }
+
+    public List<Board> findListPaging(int startIndex, int pageSize) {
+        return boardRepository.findListPaging(startIndex, pageSize);
+    }
+
+//    public Page<Board> pageList(Pageable pageable) {
+//        return boardRepository.findAll(pageable);
+//    }
 }
