@@ -36,7 +36,7 @@ public class BoardService {
         return boardRepository.findBoardByTitle(title);
     }
 
-    public int finAllCnt() {
+    public int findAllCnt() {
         return boardRepository.findAllCnt();
     }
 
