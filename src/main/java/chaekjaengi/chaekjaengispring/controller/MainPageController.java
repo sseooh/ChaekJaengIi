@@ -98,7 +98,7 @@ public class MainPageController {
         model.addAttribute("boardList", boardList);
         model.addAttribute("pagination", pagination);
 //        return "pagingTest/index";
-        return "redirect:/";
+        return "/pagingTest/index";
 
     }
 
