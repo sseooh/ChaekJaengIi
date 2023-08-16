@@ -48,25 +48,46 @@
 <!--        </span>-->
 <!--    </table>-->
 
-    <table class="table table-striped">
+<!--    <table class="table table-striped" style="border: 1px solid">-->
 
-        <thead class="thead-dark">
-        <tr>
-            <th scope="col" style="width: 10%">no</th>
-            <th scope="col">제목</th>
-            <th scope="col" style="width: 15%">작성자</th>
-        </tr>
-        </thead>
+<!--        <thead class="thead-dark">-->
+<!--        <tr>-->
+<!--            <th scope="col" style="width: 10%">no</th>-->
+<!--            <th scope="col">제목</th>-->
+<!--            <th scope="col" style="width: 15%">작성자</th>-->
+<!--        </tr>-->
+<!--        </thead>-->
 
-        <tbody>
-        <tr th:each="board : ${boardList}">
-            <th scope="row" th:text="${boardStat.index + 1}">1</th>
-            <td th:text="${board.title}"></td>
-            <td th:text="${board.author}"></td>
-        </tr>
-        </tbody>
+<!--        <tbody>-->
+<!--        <tr th:each="board : ${boardList}">-->
+<!--            <th scope="row" th:text="${boardStat.index + 1}">1</th>-->
+<!--            <td th:text="${board.title}"></td>-->
+<!--            <td th:text="${board.author}"></td>-->
+<!--        </tr>-->
+    <div id="wrapper">
+        <table class="book" th:each="board : ${boardList}">
+            <td>
+                <div style="width: 40%; float: left;">
+                    <img th:src="${board.cover}" style="width: 100%;">
+                </div>
+                <div style="width: 60%; float: left;">
+                    <span th:text="${board.title}" style="color: #606060; font-size: 130%; padding-left: 5%"></span><br>
+                    <span style="color: #9D9D9D; font-size: 70%; padding-left: 5%;">저자</span>
+                    <span th:text="${board.author}" style="font-size: 70%;"></span>
+                    <span style="color: #9D9D9D; font-size: 70%;">출판사</span>
+                    <span th:text="${board.publisher}" style="font-size: 70%;"></span>
+                    <br>
 
-    </table>
+                    <button type="button" id="getReview" th:data="${board.title}" onclick="getReview(this.getAttribute('data'))">리뷰 보기</button>
+
+                    <button type="button" id="writeReview" th:data="${board.title}" onclick="getTitle(this.getAttribute('data'))">리뷰 작성</button>
+                </div>
+            </td>
+        </table>
+    </div>
+<!--        </tbody>-->
+
+<!--    </table>-->
 
     <nav aria-label="Page navigation example ">
         <ul class="pagination">
