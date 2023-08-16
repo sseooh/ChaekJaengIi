@@ -13,6 +13,7 @@ import chaekjaengi.chaekjaengispring.web.SessionConstants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -47,7 +48,7 @@ public class MainPageController {
 
 //        model.addAttribute("list", boardService.boardList());
         /////////////
-        int totalListCnt = boardService.finAllCnt();
+        int totalListCnt = boardService.findAllCnt();
 
         Pagination pagination = new Pagination(totalListCnt, page);
 
@@ -62,6 +63,43 @@ public class MainPageController {
         /////////////
 
         return "mainPage";
+    }
+
+    @GetMapping("/mainPage")
+    public String Board(Model model, @RequestParam(defaultValue = "1") int page) {
+        int totalListCnt = boardService.findAllCnt();
+
+        Pagination pagination = new Pagination(totalListCnt, page);
+
+        int startIndex = pagination.getStartIndex();
+
+        int pageSize = pagination.getPageSize();
+
+        List<Board> boardList = boardService.findListPaging(startIndex, pageSize);
+
+        model.addAttribute("boardList", boardList);
+        model.addAttribute("pagination", pagination);
+
+        return "mainPage";
+    }
+
+    @GetMapping("/test")
+    public String Test(Model model, @RequestParam(defaultValue = "1") int page) {
+        int totalListCnt = boardService.findAllCnt();
+
+        Pagination pagination = new Pagination(totalListCnt, page);
+
+        int startIndex = pagination.getStartIndex();
+
+        int pageSize = pagination.getPageSize();
+
+        List<Board> boardList = boardService.findListPaging(startIndex, pageSize);
+
+        model.addAttribute("boardList", boardList);
+        model.addAttribute("pagination", pagination);
+//        return "pagingTest/index";
+        return "redirect:/";
+
     }
 
     @PostMapping("/logout")

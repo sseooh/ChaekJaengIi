@@ -19,6 +19,9 @@
         <form action="/logout" method="post">
             <button id="logoutBtn" type="submit" onclick="location.href='home.html'">로그아웃</button>
         </form>
+        <form action="/test" method="get">
+            <button id="testbtn" type="submit">게시판</button>
+        </form>
         <hr>
     </div>
 
@@ -73,7 +76,7 @@
                 </a>
             </li>
             <li class="page-item">
-                <a class="page-link" th:href="@{/mainPage (page = ${pagination.prevBlock})}" aria-label="Previous">
+                <a class="page-link" th:href="@{/mainPage(page = ${pagination.prevBlock})}" aria-label="Previous">
                     <span aria-hidden="true">이전</span>
                 </a>
             </li>
@@ -81,16 +84,16 @@
                 <li class="page-item"
                     th:with="start = ${pagination.startPage}, end = ${pagination.endPage}"
                     th:each="pageButton : ${#numbers.sequence(start, end)}">
-                    <a class="page-link" th:href="@{/mainPage (page = ${pageButton})}" th:text=${pageButton}></a>
+                    <a class="page-link" th:href="@{/mainPage(page = ${pageButton})}" th:text=${pageButton}></a>
                 </li>
             </th:block>
             <li class="page-item">
-                <a class="page-link" th:href="@{mainPage (page = ${pagination.nextBlock})}" aria-label="Next">
+                <a class="page-link" th:href="@{/mainPage(page = ${pagination.nextBlock})}" aria-label="Next">
                     <span aria-hidden="true">다음</span>
                 </a>
             </li>
             <li class="page-item">
-                <a class="page-link" th:href="@{mainPage (page = ${pagination.totalPageCnt})}" aria-label="Previous">
+                <a class="page-link" th:href="@{/mainPage(page = ${pagination.totalPageCnt})}" aria-label="Previous">
                     <span aria-hidden="true">끝</span>
                 </a>
             </li>
