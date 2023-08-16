@@ -22,28 +22,84 @@
         <hr>
     </div>
 
-    <table style="border: 1px solid">
-        <span th:each="board: ${list}">
-            <tr th:if="${boardStat.index ge 3}"></tr>
-            <td>
-                <div style="width: 40%; float: left;">
-                    <img th:src="${board.cover}" style="width: 100%;">
-                </div>
-                <div style="width: 60%; float: left;">
-                    <span th:text="${board.title}" style="color: #606060; font-size: 130%; padding-left: 5%"></span><br>
-                    <span style="color: #9D9D9D; font-size: 70%; padding-left: 5%;">저자</span>
-                    <span th:text="${board.author}" style="font-size: 70%;"></span>
-                    <span style="color: #9D9D9D; font-size: 70%;">출판사</span>
-                    <span th:text="${board.publisher}" style="font-size: 70%;"></span>
-                    <br>
+<!--    <table style="border: 1px solid">-->
+<!--        <span th:each="board: ${list}">-->
+<!--            <tr th:if="${boardStat.index ge 3}"></tr>-->
+<!--            <td>-->
+<!--                <div style="width: 40%; float: left;">-->
+<!--                    <img th:src="${board.cover}" style="width: 100%;">-->
+<!--                </div>-->
+<!--                <div style="width: 60%; float: left;">-->
+<!--                    <span th:text="${board.title}" style="color: #606060; font-size: 130%; padding-left: 5%"></span><br>-->
+<!--                    <span style="color: #9D9D9D; font-size: 70%; padding-left: 5%;">저자</span>-->
+<!--                    <span th:text="${board.author}" style="font-size: 70%;"></span>-->
+<!--                    <span style="color: #9D9D9D; font-size: 70%;">출판사</span>-->
+<!--                    <span th:text="${board.publisher}" style="font-size: 70%;"></span>-->
+<!--                    <br>-->
 
-                    <button type="button" id="getReview" th:data="${board.title}" onclick="getReview(this.getAttribute('data'))">리뷰 보기</button>
+<!--                    <button type="button" id="getReview" th:data="${board.title}" onclick="getReview(this.getAttribute('data'))">리뷰 보기</button>-->
 
-                    <button type="button" id="writeReview" th:data="${board.title}" onclick="getTitle(this.getAttribute('data'))">리뷰 작성</button>
-                </div>
-            </td>
-        </span>
+<!--                    <button type="button" id="writeReview" th:data="${board.title}" onclick="getTitle(this.getAttribute('data'))">리뷰 작성</button>-->
+<!--                </div>-->
+<!--            </td>-->
+<!--        </span>-->
+<!--    </table>-->
+
+    <table class="table table-striped">
+
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col" style="width: 10%">no</th>
+            <th scope="col">제목</th>
+            <th scope="col" style="width: 15%">작성자</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="board : ${boardList}">
+            <th scope="row" th:text="${boardStat.index + 1}">1</th>
+            <td th:text="${board.title}"></td>
+            <td th:text="${board.author}"></td>
+        </tr>
+        </tbody>
+
     </table>
+
+    <nav aria-label="Page navigation example ">
+        <ul class="pagination">
+            <li class="page-item">
+                <a class="page-link" th:href="@{/mainPage}" aria-label="Previous">
+                    <span aria-hidden="true">처음</span>
+                </a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" th:href="@{/mainPage (page = ${pagination.prevBlock})}" aria-label="Previous">
+                    <span aria-hidden="true">이전</span>
+                </a>
+            </li>
+            <th:block  th:with="start = ${pagination.startPage}, end = ${pagination.endPage}">
+                <li class="page-item"
+                    th:with="start = ${pagination.startPage}, end = ${pagination.endPage}"
+                    th:each="pageButton : ${#numbers.sequence(start, end)}">
+                    <a class="page-link" th:href="@{/mainPage (page = ${pageButton})}" th:text=${pageButton}></a>
+                </li>
+            </th:block>
+            <li class="page-item">
+                <a class="page-link" th:href="@{mainPage (page = ${pagination.nextBlock})}" aria-label="Next">
+                    <span aria-hidden="true">다음</span>
+                </a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" th:href="@{mainPage (page = ${pagination.totalPageCnt})}" aria-label="Previous">
+                    <span aria-hidden="true">끝</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <!--
+    1. 페이징 처리 수정
+    2. url 변경 없이 화면 내용만 바꾸도록..?
+    -->
 
 
     <!--

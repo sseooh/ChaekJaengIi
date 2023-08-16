@@ -11,4 +11,8 @@ public interface BoardRepository {
     List<Board> findAll();
 
     Optional<Board> findBoardByTitle(String title);
+
+    int findAllCnt();
+
+    List<Board> findListPaging(int startIndex, int pageSize);
 }
