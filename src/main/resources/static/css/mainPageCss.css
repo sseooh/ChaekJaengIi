@@ -39,6 +39,17 @@
     margin-left: 5%;
 }
 
+.book {
+    display: inline;
+}
+
+#wrapper {
+    display: grid;
+    grid-template-columns: 25% 25% 25%;
+    grid-template-rows: 25% 25%;
+    margin: 30px;
+}
+
 .pagination {
     display: flex;
     list-style: none;
