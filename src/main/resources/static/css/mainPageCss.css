@@ -38,3 +38,26 @@
     margin-bottom: 10px;
     margin-left: 5%;
 }
+
+.pagination {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    max-width: 300px; /* 원하는 최대 너비로 조절 */
+    margin: 0 auto; /* 가운데 정렬 */
+}
+
+.page-link {
+    display: block;
+    padding: 3px 8px; /* 조절 가능한 패딩 */
+    border: 1px solid #ccc;
+    text-align: center;
+    text-decoration: none;
+    color: #333;
+    font-size: 12px; /* 조절 가능한 폰트 크기 */
+}
+
+.page-item {
+    margin-right: 5px; /* 조절 가능한 간격 */
+}
+
