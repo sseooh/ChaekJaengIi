@@ -4,7 +4,7 @@ build/
 !**/src/main/**/build/
 !**/src/test/**/build/
 
-.gradle/7.6/checksums/
+.gradle
 
 ### STS ###
 .apt_generated
